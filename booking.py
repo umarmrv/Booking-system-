@@ -1,6 +1,6 @@
 from database import connect
 from notifier import send_notification
-from datetime import datetime
+
 
 
 
@@ -22,7 +22,7 @@ def book_cabinet(cabinet_number, user_name, email, phone, start, end):
     if not free:
         return f"Кабинет уже занят {existing[3]} до {existing[6]}"
     with connect() as conn:
-        cabinet_id = conn.execute("SELECT id FROM rooms WHERE number=?", (cabinet_number,)).fetchone()[0]
+        cabinet_id = conn.execute("SELECT id FROM cabinet WHERE number=?", (cabinet_number,)).fetchone()[0]
         conn.execute("""
             INSERT INTO bookings (cabinet_id, user_name, email, phone, start_time, end_time)
             VALUES (?, ?, ?, ?, ?, ?)
