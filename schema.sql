@@ -6,7 +6,7 @@ CREATE TABLE cabinet (
 
 CREATE TABLE bookings (
     id INTEGER PRIMARY KEY,
-    room_id INTEGER,
+    cabinet_id INTEGER,
     user_name TEXT,
     email TEXT,
     phone TEXT,
